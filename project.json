@@ -1,0 +1,22 @@
+{
+  "overview": "A dark-themed mobile-first personal finance tracker for recording income and expenses by category, with a live balance summary and category spending analysis.",
+  "features": [
+    "Register income and expenses with amount, category and date",
+    "See your total available balance update instantly",
+    "Track income and expense totals separately",
+    "Bar chart and progress bars showing spending per category",
+    "Highlight of the category where you spent the most",
+    "Recent transactions list with delete",
+    "Dark interface with green and grey tones",
+    "Bottom navigation between Summary, Register and Analysis"
+  ],
+  "category": "finance-tracker",
+  "tags": [
+    "finance",
+    "budgeting",
+    "personal-finance",
+    "dark-theme",
+    "mobile"
+  ],
+  "last_updated": "2026-10-19T19:01:27.679Z"
+}

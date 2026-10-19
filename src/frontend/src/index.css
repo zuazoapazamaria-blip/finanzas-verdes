@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300 700;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300 900;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 800;
+}
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "Satoshi";
+    --font-mono: "JetBrains Mono";
+    --radius: 1rem;
+
+    --background: 0.16 0.012 150;
+    --foreground: 0.94 0.008 150;
+    --card: 0.2 0.014 152;
+    --card-foreground: 0.94 0.008 150;
+    --popover: 0.23 0.016 152;
+    --popover-foreground: 0.94 0.008 150;
+
+    --primary: 0.78 0.19 148;
+    --primary-foreground: 0.16 0.02 150;
+
+    --secondary: 0.26 0.016 152;
+    --secondary-foreground: 0.86 0.008 150;
+    --muted: 0.26 0.016 152;
+    --muted-foreground: 0.62 0.012 150;
+
+    --accent: 0.82 0.17 150;
+    --accent-foreground: 0.16 0.02 150;
+
+    --destructive: 0.62 0.19 22;
+    --destructive-foreground: 0.16 0.012 22;
+
+    --success: 0.78 0.19 148;
+    --success-foreground: 0.16 0.02 150;
+    --warning: 0.78 0.16 78;
+    --warning-foreground: 0.18 0.02 78;
+
+    --border: 0.3 0.016 152;
+    --input: 0.3 0.016 152;
+    --ring: 0.78 0.19 148;
+
+    --chart-1: 0.78 0.19 148;
+    --chart-2: 0.7 0.14 158;
+    --chart-3: 0.62 0.09 168;
+    --chart-4: 0.54 0.05 190;
+    --chart-5: 0.46 0.03 210;
+
+    --sidebar: 0.18 0.014 152;
+    --sidebar-foreground: 0.94 0.008 150;
+    --sidebar-primary: 0.78 0.19 148;
+    --sidebar-primary-foreground: 0.16 0.02 150;
+    --sidebar-accent: 0.26 0.016 152;
+    --sidebar-accent-foreground: 0.86 0.008 150;
+    --sidebar-border: 0.3 0.016 152;
+    --sidebar-ring: 0.78 0.19 148;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.82 0.17 150),
+      oklch(0.7 0.16 165)
+    );
+    --gradient-balance: linear-gradient(
+      145deg,
+      oklch(0.24 0.03 152),
+      oklch(0.19 0.02 150)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.22 0.016 152),
+      oklch(0.18 0.014 152)
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0.16 0.012 150;
+    --foreground: 0.94 0.008 150;
+    --card: 0.2 0.014 152;
+    --card-foreground: 0.94 0.008 150;
+    --popover: 0.23 0.016 152;
+    --popover-foreground: 0.94 0.008 150;
+
+    --primary: 0.78 0.19 148;
+    --primary-foreground: 0.16 0.02 150;
+
+    --secondary: 0.26 0.016 152;
+    --secondary-foreground: 0.86 0.008 150;
+    --muted: 0.26 0.016 152;
+    --muted-foreground: 0.62 0.012 150;
+
+    --accent: 0.82 0.17 150;
+    --accent-foreground: 0.16 0.02 150;
+
+    --destructive: 0.62 0.19 22;
+    --destructive-foreground: 0.16 0.012 22;
+
+    --success: 0.78 0.19 148;
+    --success-foreground: 0.16 0.02 150;
+    --warning: 0.78 0.16 78;
+    --warning-foreground: 0.18 0.02 78;
+
+    --border: 0.3 0.016 152;
+    --input: 0.3 0.016 152;
+    --ring: 0.78 0.19 148;
+
+    --chart-1: 0.78 0.19 148;
+    --chart-2: 0.7 0.14 158;
+    --chart-3: 0.62 0.09 168;
+    --chart-4: 0.54 0.05 190;
+    --chart-5: 0.46 0.03 210;
+
+    --sidebar: 0.18 0.014 152;
+    --sidebar-foreground: 0.94 0.008 150;
+    --sidebar-primary: 0.78 0.19 148;
+    --sidebar-primary-foreground: 0.16 0.02 150;
+    --sidebar-accent: 0.26 0.016 152;
+    --sidebar-accent-foreground: 0.86 0.008 150;
+    --sidebar-border: 0.3 0.016 152;
+    --sidebar-ring: 0.78 0.19 148;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-balance {
+    background-image: var(--gradient-balance);
+  }
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

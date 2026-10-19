@@ -1,0 +1,102 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type TransactionKind = 
+ variant {
+   expense;
+   income;
+ };
+type TransactionId = nat;
+type Transaction = 
+ record {
+   amount: nat;
+   category: Category;
+   createdAt: Timestamp;
+   date: Timestamp;
+   id: TransactionId;
+   kind: TransactionKind;
+ };
+type Timestamp = nat;
+type Summary = 
+ record {
+   balance: int;
+   byCategory: vec CategoryTotal;
+   totalExpense: nat;
+   totalIncome: nat;
+ };
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type CategoryTotal = 
+ record {
+   category: Category;
+   total: nat;
+ };
+type Category = 
+ variant {
+   comida;
+   entretenimiento;
+   transporte;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createTransaction: (kind: TransactionKind, amount: nat, category: Category,
+   date: Timestamp) -> (Transaction);
+  deleteTransaction: (id: TransactionId) -> (bool);
+  execute: (qJson: text) -> (Result) query;
+  getApiDoc: () -> (text) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getSummary: () -> (Summary) query;
+  isCallerAdmin: () -> (bool) query;
+  listTransactions: () -> (vec Transaction) query;
+  schema: () -> (text) query;
+}
